@@ -196,12 +196,12 @@ microbenchmark(calculate_density_cpp(test, x1, 0.6, 2),
 
 ```
 ## Unit: milliseconds
-##                                     expr      min       lq      mean    median
-##  calculate_density_cpp(test, x1, 0.6, 2) 1.858801 1.925001  2.120603  1.969151
-##    calculate_density_R(test, x1, 0.6, 2) 5.345700 7.613301 12.578117 12.919401
-##         uq       max neval
-##   2.269851  3.630601   100
-##  16.041901 30.193801   100
+##                                     expr    min      lq      mean   median
+##  calculate_density_cpp(test, x1, 0.6, 2) 1.9160 1.97665  2.160975  2.05505
+##    calculate_density_R(test, x1, 0.6, 2) 5.5031 7.66500 13.188654 13.06905
+##        uq     max neval
+##   2.23670  3.5082   100
+##  16.74105 30.0281   100
 ```
 
 
@@ -321,10 +321,10 @@ microbenchmark(plugin_oracle_bandwidth(test, "epanechnikov"))
 
 ```
 ## Unit: microseconds
-##                                           expr   min      lq    mean   median
-##  plugin_oracle_bandwidth(test, "epanechnikov") 124.8 127.801 359.014 134.6505
-##        uq     max neval
-##  194.0015 16351.5   100
+##                                           expr   min     lq    mean median
+##  plugin_oracle_bandwidth(test, "epanechnikov") 133.6 157.45 377.137 204.45
+##      uq     max neval
+##  277.75 14901.4   100
 ```
 
 ```r
@@ -337,10 +337,10 @@ microbenchmark(
 
 ```
 ## Unit: microseconds
-##     expr      min       lq       mean    median        uq       max neval
-##     RCPP 2046.201 2178.151  2438.5470 2266.1510  2553.051  8082.301   100
-##        R 5394.201 7168.201 11173.3511 9834.4015 14388.752 22921.302   100
-##  DEFAULT  462.801  529.601   676.0652  624.3015   709.301  2262.501   100
+##     expr    min      lq      mean   median      uq     max neval
+##     RCPP 2129.1 2238.80  2606.575  2369.00  2642.4 14085.3   100
+##        R 6246.7 8537.85 14019.510 12559.70 17620.7 36359.8   100
+##  DEFAULT  488.6  620.65   915.740   780.45   943.9  4817.2   100
 ```
 
 ---
@@ -377,13 +377,12 @@ rcpp_density_times &lt;-
 # Accuracy on simulated data
 &lt;img src="Presentation_assignment1_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 
-
-
---- 
-
+---
 # Accuracy on real data
-
 &lt;img src="Presentation_assignment1_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
