@@ -22,6 +22,7 @@ Note that we have shown that
 
 $$||K||_2^2 = \frac{3}{5}, \qquad \sigma^2_K = \frac{1}{5}$$
 Which we can plug into the oracle bandwidth along with the assumption that our underlying data is gaussian.
+$$\hat f(x) = \frac{1}{nh}\sum_{i=1}^{n}K\left(\frac{x-x_i}{h}\right)$$
 ---
 # Used libraries
 
@@ -177,6 +178,7 @@ microbenchmark(calculate_density_cpp(test, x1, 0.6, 2),
 
 ---
 # Oracle bandwidth
+$$h_{\text{plug-in oracle}}=\left(\frac{8\sqrt{\pi}||K||_2^2}{3\sigma_K^4}\right)^{1/5}\tilde\sigma n^{-1/5}\quad \tilde\sigma = \min\{\hat\sigma, \text{IQR}/1.34\}$$
 
 ```{r}
 kernel_constant <- function(x) {

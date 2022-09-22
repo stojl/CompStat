@@ -39,6 +39,7 @@ Note that we have shown that
 
 `$$||K||_2^2 = \frac{3}{5}, \qquad \sigma^2_K = \frac{1}{5}$$`
 Which we can plug into the oracle bandwidth along with the assumption that our underlying data is gaussian.
+`$$\hat f(x) = \frac{1}{nh}\sum_{i=1}^{n}K\left(\frac{x-x_i}{h}\right)$$`
 ---
 # Used libraries
 
@@ -196,17 +197,18 @@ microbenchmark(calculate_density_cpp(test, x1, 0.6, 2),
 
 ```
 ## Unit: milliseconds
-##                                     expr    min      lq      mean   median
-##  calculate_density_cpp(test, x1, 0.6, 2) 1.9160 1.97665  2.160975  2.05505
-##    calculate_density_R(test, x1, 0.6, 2) 5.5031 7.66500 13.188654 13.06905
+##                                     expr   min      lq      mean   median
+##  calculate_density_cpp(test, x1, 0.6, 2) 2.119 2.14460  2.981993  2.32515
+##    calculate_density_R(test, x1, 0.6, 2) 5.905 8.45875 14.002405 13.34410
 ##        uq     max neval
-##   2.23670  3.5082   100
-##  16.74105 30.0281   100
+##   4.39340  6.2267   100
+##  17.22685 42.9360   100
 ```
 
 
 ---
 # Oracle bandwidth
+`$$h_{\text{plug-in oracle}}=\left(\frac{8\sqrt{\pi}||K||_2^2}{3\sigma_K^4}\right)^{1/5}\tilde\sigma n^{-1/5}\quad \tilde\sigma = \min\{\hat\sigma, \text{IQR}/1.34\}$$`
 
 
 ```r
@@ -321,10 +323,10 @@ microbenchmark(plugin_oracle_bandwidth(test, "epanechnikov"))
 
 ```
 ## Unit: microseconds
-##                                           expr   min     lq    mean median
-##  plugin_oracle_bandwidth(test, "epanechnikov") 133.6 157.45 377.137 204.45
-##      uq     max neval
-##  277.75 14901.4   100
+##                                           expr   min    lq    mean median  uq
+##  plugin_oracle_bandwidth(test, "epanechnikov") 132.7 135.3 340.649  138.8 158
+##      max neval
+##  15718.4   100
 ```
 
 ```r
@@ -337,10 +339,10 @@ microbenchmark(
 
 ```
 ## Unit: microseconds
-##     expr    min      lq      mean   median      uq     max neval
-##     RCPP 2129.1 2238.80  2606.575  2369.00  2642.4 14085.3   100
-##        R 6246.7 8537.85 14019.510 12559.70 17620.7 36359.8   100
-##  DEFAULT  488.6  620.65   915.740   780.45   943.9  4817.2   100
+##     expr    min      lq      mean   median       uq     max neval
+##     RCPP 2298.3 2417.00  3633.614  2613.30  5081.35 19308.0   100
+##        R 6014.3 7656.45 13863.794 12150.60 18078.80 36389.1   100
+##  DEFAULT  564.4  746.90  1078.109   909.05  1330.00  5161.6   100
 ```
 
 ---
